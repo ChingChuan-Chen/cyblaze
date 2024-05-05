@@ -1,0 +1,59 @@
+[build-system]
+requires = ['setuptools>=64', 'wheel', 'Cython>=3.0.10', 'numpy>=1.19.5', 'scipy>=1.6.0', 'threadpoolctl>=3.1.0']
+build-backend = 'setuptools.build_meta'
+
+[project]
+name = 'cyblaze'
+dynamic = ['version']
+description = 'Penalized Partial Functional Linear Model'
+readme = 'README.rst'
+requires-python = '>=3.10'
+license = {file = 'LICENSE'}
+classifiers = [
+    'Development Status :: 3 - Alpha',
+    'Environment :: Console',
+    'Intended Audience :: Science/Research',
+    'License :: OSI Approved :: MIT License',
+    'Operating System :: OS Independent',
+    'Programming Language :: Python',
+    'Programming Language :: Python :: 3',
+    'Programming Language :: Python :: 3 :: Only',
+    'Programming Language :: Python :: 3.10',
+    'Programming Language :: Python :: 3.11',
+    'Programming Language :: Python :: 3.12',
+    'Programming Language :: Cython',
+    'Topic :: Software Development',
+    'Topic :: Scientific/Engineering'
+]
+dependencies = [
+    'setuptools>=64',
+    'Cython>=3.0.10',
+    'numpy>=1.19.5',
+    'scipy>=1.6.0',
+    'threadpoolctl>=3.1.0'
+]
+
+[[project.maintainers]]
+name = 'Ching-Chuan Chen'
+email = 'zw12356@gmail.com'
+
+[project.urls]
+homepage = 'https://github.com:ChingChuan-Chen/cyblaze'
+tracker = 'https://github.com:ChingChuan-Chen/cyblaze/issues'
+source = 'https://github.com:ChingChuan-Chen/cyblaze'
+
+[project.optional-dependencies]
+test = ['pytest>=7.2.0', 'pytest-cov>=4.0.0']
+
+[tool.setuptools.packages.find]
+include = ['cyblaze*']
+exclude = ['docs*', 'tests*']
+
+[tool.setuptools.package-data]
+pflm = ["*.pxd"]
+
+[tool.setuptools.dynamic]
+version = {attr = "cyblaze.__version__"}
+
+[tool.pytest.ini_options]
+addopts = "--cov=cyblaze --cov-report term-missing tests/"
